@@ -13,7 +13,7 @@ router.route("/login").post(loginUser);
 
 // secured routes
 
-router.route("/logout").post(verifyJWT, logoutUser);
+const RateLimit = require('express-rate-limit'); const limiter = RateLimit({ windowMs: 15 * 60 * 1000, max: 100 }); router.route("/logout").post(limiter, verifyJWT, logoutUser);
 
 router.route("/refreshtoken").post(refreshAccessToken);
 
