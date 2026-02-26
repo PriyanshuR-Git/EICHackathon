@@ -109,7 +109,7 @@ const loginUser = asynchandler(async (req, res) => {
   }
 
   const isPasswordValid = await user.isPasswordCorrect(password);
-  console.log("Password Valid:", isPasswordValid)
+console.log("Password validation attempted.")
   if (!isPasswordValid) {
     throw new ApiError(401, "Invalid User Credentials");
   }
